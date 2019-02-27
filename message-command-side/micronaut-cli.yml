@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: io.resk.message.command
+---
+testFramework: junit
+sourceLanguage: java
