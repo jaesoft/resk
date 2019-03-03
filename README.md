@@ -3,4 +3,4 @@ Real-Time Messaging System
 
 # Quick Start
 
-_Comming soon_
+_Coming soon_
