@@ -1,0 +1,11 @@
+version: '3.4'
+
+services: 
+  command.side:
+    image: jaesoft/resk-command
+    container_name: command
+    build:
+      context: message-command-side
+      dockerfile: ./src/main/docker/Dockerfile
+    ports:
+      - '8081:8080'

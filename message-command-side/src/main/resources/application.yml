@@ -1,3 +1,20 @@
 micronaut:
     application:
         name: message-command-side
+postgres:
+    reactive:
+        client:
+            port: 5432
+            host: localhost
+            database: commandresk
+            user: reskuser
+            passoword: complexpassword
+
+micronaut:
+    router:
+        versioning:
+            enabled: true
+            parameter:
+                enabled: true
+            header:
+                enabled: true 

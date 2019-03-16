@@ -1,0 +1,5 @@
+version: '3.4'
+
+services: 
+  sql.data:
+    image: postgres:11
