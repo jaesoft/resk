@@ -1,20 +1,41 @@
 micronaut:
-    application:
-        name: message-command-side
+  application:
+    name: message-command-side
+  security:
+    enabled: true
+    endpoints:
+      login:
+        enabled: true
+      oauth:
+        enabled: true
+    token:
+      jwt:
+        enabled: true
+        signatures:
+          secret:
+            generator:
+              secret: pleaseChangeThisSecretForANewOne
+  router:
+    versioning:
+      enabled: true
+      parameter:
+        enabled: true
+      header:
+        enabled: true 
+      
 postgres:
-    reactive:
-        client:
-            port: 5432
-            host: localhost
-            database: commandresk
-            user: reskuser
-            passoword: complexpassword
+  reactive:
+    client:
+      port: 5432
+      host: localhost
+      database: commandresk
+      user: reskuser
+      passoword: complexpassword
+      
+resk:
+  features:
+    security-mode: none
+    cache-mode: embedded
+  routes:
+    secured: isAuthenticated()
 
-micronaut:
-    router:
-        versioning:
-            enabled: true
-            parameter:
-                enabled: true
-            header:
-                enabled: true 

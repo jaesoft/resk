@@ -31,18 +31,20 @@ dependencies {
 	annotationProcessor "org.projectlombok:lombok:$lombokVersion"
     annotationProcessor 'io.micronaut:micronaut-inject-java'
     annotationProcessor 'io.micronaut:micronaut-validation'
+	annotationProcessor 'io.micronaut:micronaut-security'
     compileOnly "org.projectlombok:lombok:$lombokVersion"
     compileOnly 'io.micronaut:micronaut-inject-java'
     compile 'io.micronaut:micronaut-inject'
     compile 'io.micronaut:micronaut-validation'
     compile 'io.micronaut:micronaut-runtime'
+	compile 'io.micronaut:micronaut-security-jwt'
     compile 'io.micronaut:micronaut-http-client'
     compile 'io.micronaut.configuration:micronaut-postgres-reactive'
     compile 'javax.annotation:javax.annotation-api'
     compile 'io.micronaut:micronaut-http-server-netty'
     runtime 'ch.qos.logback:logback-classic:1.2.3'
-	testCompile "org.codehaus.groovy:groovy-all:2.5.0"
-    testCompile "org.spockframework:spock-core:1.1-groovy-2.4"
+	testCompile 'org.codehaus.groovy:groovy-all:2.5.0'
+    testCompile 'org.spockframework:spock-core:1.1-groovy-2.4'
 }
 
 shadowJar {
