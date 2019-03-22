@@ -1,0 +1,11 @@
+version: '3.4'
+
+services: 
+  api.gateway:
+    build: 
+      context: ReskGateway
+      dockerfile: ./Dockerfile
+  command.side:
+    build:
+      context: message-command-side
+      dockerfile: ./src/main/docker/Dockerfile

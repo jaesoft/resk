@@ -1,5 +1,10 @@
 version: '3.4'
 
+# No support for extends https://github.com/moby/moby/issues/31101
 services: 
   sql.data:
     image: postgres:11
+    container_name: postgresdb
+  nosql.data:
+    image: mongo:4
+    container_name: mongodb
