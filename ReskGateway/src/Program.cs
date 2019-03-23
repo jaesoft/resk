@@ -32,6 +32,7 @@ namespace ReskGateway
                     string configPath = Path.Combine(hostingContext.HostingEnvironment.ContentRootPath, "Configuration");
                     configPath = Path.Combine(configPath, hostingContext.HostingEnvironment.EnvironmentName, "ocelot.json");
                     config.AddJsonFile(configPath, optional: false, reloadOnChange: true);
+                    config.AddEnvironmentVariables();
                 });
             
     }

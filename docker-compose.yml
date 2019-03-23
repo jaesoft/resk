@@ -9,6 +9,7 @@ services:
     environment: 
       - ASPNETCORE_URLS=http://0.0.0.0:80
       - ASPNETCORE_ENVIRONMENT=Production
+      - GlobalConfiguration__BaseUrl
     depends_on: 
       - command.side
   command.side:
