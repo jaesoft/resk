@@ -19,7 +19,7 @@ micronaut:
     versioning:
       enabled: true
       parameter:
-        enabled: true
+        enabled: false
       header:
         enabled: true 
       
@@ -28,11 +28,13 @@ postgres:
     client:
       port: 5432
       host: localhost
-      database: commandresk
-      user: reskuser
-      passoword: complexpassword
+      database: resk
+      user: resk_user
+      password: resk_password
       
 resk:
+  version:
+    default: 1
   features:
     security-mode: none
     cache-mode: embedded

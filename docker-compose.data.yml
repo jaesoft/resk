@@ -5,6 +5,13 @@ services:
   sql.data:
     image: postgres:11
     container_name: postgresdb
+    environment: 
+      - POSTGRES_USER=${RESK_DATASOURCE_POSTGRES_USERNAME}
+      - POSTGRES_PASSWORD=${RESK_DATASOURCE_POSTGRES_PASSWORD}
+      - POSTGRES_DB=${RESK_DATASOURCE_POSTGRES_DATABASE}
+    ports: 
+      - '5432:5432'
+
   nosql.data:
     image: mongo:4
     container_name: mongodb

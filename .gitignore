@@ -14,3 +14,4 @@ buildNumber.properties
 .vs/
 bin/
 obj/
+.env
