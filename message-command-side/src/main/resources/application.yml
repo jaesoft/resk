@@ -14,12 +14,12 @@ micronaut:
         signatures:
           secret:
             generator:
-              secret: pleaseChangeThisSecretForANewOne
+              secret: ${resk.security.secret:pleaseChangeThisSecretForANewOne}
   router:
     versioning:
       enabled: true
       parameter:
-        enabled: false
+        enabled: true
       header:
         enabled: true 
       
@@ -33,11 +33,19 @@ postgres:
       password: resk_password
       
 resk:
-  version:
-    default: 1
   features:
-    security-mode: none
+    security-mode: embedded
+    discovery-mode: none
     cache-mode: embedded
   routes:
     secured: isAuthenticated()
+          
+flyway:
+  datasources: 
+    default: 
+      async: true
+      locations: classpath:db/migration
+      url: 'jdbc:postgresql://${postgres.reactive.client.host}:${postgres.reactive.client.port}/${postgres.reactive.client.database}'
+      user: ${postgres.reactive.client.user}
+      password: ${postgres.reactive.client.password}
 
