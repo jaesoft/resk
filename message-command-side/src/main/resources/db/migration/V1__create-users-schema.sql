@@ -4,9 +4,9 @@ CREATE TABLE users (
   username VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL,
   enabled BOOLEAN DEFAULT TRUE,
-  accountExpired BOOLEAN DEFAULT FALSE,
-  accountLocked BOOLEAN DEFAULT FALSE,
-  passwordExpired BOOLEAN DEFAULT FALSE,
+  account_expired BOOLEAN DEFAULT FALSE,
+  account_locked BOOLEAN DEFAULT FALSE,
+  password_expired BOOLEAN DEFAULT FALSE,
   CONSTRAINT id UNIQUE (id),
   CONSTRAINT email UNIQUE (email),
   CONSTRAINT username UNIQUE (username)

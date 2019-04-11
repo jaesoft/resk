@@ -18,6 +18,7 @@ micronaut:
   router:
     versioning:
       enabled: true
+      default-version: 1
       parameter:
         enabled: true
       header:
