@@ -15,3 +15,12 @@ buildNumber.properties
 bin/
 obj/
 .env
+
+
+.classpath
+.factorypath
+.gradle/
+.project
+.settings/
+.vscode/
+build/
