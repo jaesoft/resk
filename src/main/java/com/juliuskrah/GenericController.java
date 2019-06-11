@@ -21,7 +21,7 @@ public abstract class GenericController<T, ID extends Serializable> {
     public abstract String getPath();
     @Post
     public Mono<HttpResponse<T>> save(@Valid @Body T entity) {
-        log.info("entity '{}''",  entity);
+        log.info("entity '{}'",  entity);  // com.fasterxml.jackson.databind.node.ObjectNode
 
         return service.save(entity).map(savedEntity -> {
             var location = UriBuilder.of(getPath()) //
