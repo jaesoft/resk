@@ -1,5 +1,7 @@
 package io.resk.message.command.domain;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import io.micronaut.security.authentication.providers.UserState;
@@ -15,4 +17,5 @@ public class User implements UserState {
 	private boolean accountExpired = false;
 	private boolean accountLocked = false;
 	private boolean passwordExpired = false;
+	private List<String> roles = new ArrayList<String>(0);
 }

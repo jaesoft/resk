@@ -1,6 +1,7 @@
 package io.resk.message.command.repository;
 
 import java.io.Serializable;
+import java.util.List;
 
 import io.reactivex.Flowable;
 import io.reactivex.Single;
@@ -23,6 +24,6 @@ public interface UserRepository {
 
 	Single<User> save(String email, String username, String password);
 
-	Single<User> saveUserWithRole(User user, Role role);
+	Single<User> saveUserWithRole(User user, List<Role> roles);
 
 }

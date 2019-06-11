@@ -1,6 +1,7 @@
 package io.resk.message.command.repository;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.UUID;
 
 import javax.inject.Singleton;
@@ -106,7 +107,7 @@ public class UserRepositoryImpl implements UserRepository {
 	}
 
 	@Override
-	public Single<User> saveUserWithRole(User user, Role role) {
+	public Single<User> saveUserWithRole(User user, List<Role> roles) {
 		// TODO Auto-generated method stub
 		return null;
 	}
