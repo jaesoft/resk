@@ -1,0 +1,9 @@
+micronaut:
+  application:
+    name: demo
+---
+micronaut:
+  io:
+    watch:
+      paths: src/main
+      restart: true

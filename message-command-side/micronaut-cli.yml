@@ -1,5 +1,0 @@
-profile: service
-defaultPackage: io.resk.message.command
----
-testFramework: spock
-sourceLanguage: java

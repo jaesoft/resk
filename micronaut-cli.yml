@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: com.juliuskrah
+---
+testFramework: spock
+sourceLanguage: java
