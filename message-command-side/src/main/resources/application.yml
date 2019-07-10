@@ -14,7 +14,7 @@ micronaut:
         signatures:
           secret:
             generator:
-              secret: ${resk.security.secret:pleaseChangeThisSecretForANewOne}
+              secret: ${resk.security.secret}
   router:
     versioning:
       enabled: true
@@ -23,7 +23,13 @@ micronaut:
         enabled: true
       header:
         enabled: true 
-      
+
+endpoints:
+  health:
+    postgres:
+      reactive:
+        enabled: false
+
 postgres:
   reactive:
     client:
@@ -35,15 +41,21 @@ postgres:
       
 resk:
   features:
-    security-mode: embedded
-    discovery-mode: none
-    cache-mode: embedded
+    storage: memory  # memory, external
+    security-mode: embedded # none, embedded, oauth2
+    discovery-mode: none # none, external
+    cache-mode: embedded # embedded, external
+    migration:
+      enabled: false
   routes:
-    secured: isAuthenticated()
+    secured: isAuthenticated() # isAnonymous(), isAuthenticated()
+  security:
+    secret: 3a55132e-5762-451d-95d4-0f72252602ed
           
 flyway:
   datasources: 
-    default: 
+    default:
+      enabled: ${resk.features.migration.enabled}
       async: true
       locations: classpath:db/migration
       url: 'jdbc:postgresql://${postgres.reactive.client.host}:${postgres.reactive.client.port}/${postgres.reactive.client.database}'

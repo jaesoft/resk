@@ -1,6 +1,5 @@
 package io.resk.message.command.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -17,5 +16,5 @@ public class User implements UserState {
 	private boolean accountExpired = false;
 	private boolean accountLocked = false;
 	private boolean passwordExpired = false;
-	private List<String> roles = new ArrayList<String>(0);
+	private List<String> roles = List.of();
 }

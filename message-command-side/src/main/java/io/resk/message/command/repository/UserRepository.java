@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import io.reactivex.Flowable;
+import io.reactivex.Maybe;
 import io.reactivex.Single;
 import io.resk.message.command.domain.Role;
 import io.resk.message.command.domain.User;
@@ -12,11 +13,11 @@ public interface UserRepository {
 
 	void delete(Serializable id);
 
-	Single<User> findById(Serializable id);
+	Maybe<User> findById(Serializable id);
 
-	Single<User> findByUsername(String username);
+	Maybe<User> findByUsername(String username);
 
-	Flowable<String> findAllRolesByUsername(String username);
+	Flowable<List<String>> findAllRolesByUsername(String username);
 
 	Flowable<User> findAllUsers();
 

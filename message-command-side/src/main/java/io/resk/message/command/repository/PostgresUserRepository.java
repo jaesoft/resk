@@ -6,11 +6,14 @@ import java.util.UUID;
 
 import javax.inject.Singleton;
 
+import io.micronaut.context.annotation.Replaces;
+import io.micronaut.context.annotation.Requires;
 import io.reactiverse.pgclient.Row;
 import io.reactiverse.reactivex.pgclient.PgPool;
 import io.reactiverse.reactivex.pgclient.PgStream;
 import io.reactiverse.reactivex.pgclient.Tuple;
 import io.reactivex.Flowable;
+import io.reactivex.Maybe;
 import io.reactivex.Single;
 import io.resk.message.command.domain.Role;
 import io.resk.message.command.domain.User;
@@ -20,8 +23,10 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Singleton
+@Replaces(InMemoryUserRepository.class)
+@Requires(property = "resk.features.storage", notEquals = "memory")
 @RequiredArgsConstructor
-public class UserRepositoryImpl implements UserRepository {
+public class PostgresUserRepository implements UserRepository {
 	private final PgPool client;
 
 	@Override
@@ -53,7 +58,7 @@ public class UserRepositoryImpl implements UserRepository {
 	}
 
 	@Override
-	public Single<User> findByUsername(String username) {
+	public Maybe<User> findByUsername(String username) {
 		return client.rxPreparedQuery(
 				"SELECT id, username, email, password, enabled, account_expired, account_locked, password_expired "
 						+ "FROM users WHERE username = $1",
@@ -73,11 +78,11 @@ public class UserRepositoryImpl implements UserRepository {
 						return user;
 					} else
 						throw new IncorrectResultSizeException(1, rows.rowCount());
-				});
+				}).toMaybe();
 	}
 
 	@Override
-	public Single<User> findById(Serializable id) {
+	public Maybe<User> findById(Serializable id) {
 		return client.rxPreparedQuery(
 				"SELECT id, username, email, password, enabled, account_expired, account_locked, password_expired "
 						+ "FROM users WHERE id = $1",
@@ -97,7 +102,7 @@ public class UserRepositoryImpl implements UserRepository {
 						return user;
 					} else
 						throw new IncorrectResultSizeException(1, rows.rowCount());
-				});
+				}).toMaybe();
 	}
 
 	@Override
@@ -113,7 +118,7 @@ public class UserRepositoryImpl implements UserRepository {
 	}
 
 	@Override
-	public Flowable<String> findAllRolesByUsername(String username) {
+	public Flowable<List<String>> findAllRolesByUsername(String username) {
 		// TODO Auto-generated method stub
 		return null;
 	}
