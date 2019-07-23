@@ -2,8 +2,8 @@ package com.juliuskrah;
 
 import java.io.Serializable;
 
-import io.reactivex.Maybe;
+import io.reactivex.Single;
 
 public interface StatusService<T, ID extends Serializable> {
-    Maybe<T> find(ID id);
+    Single<T> save(T status);
 }

@@ -1,17 +1,20 @@
 package com.juliuskrah;
 
+import static java.util.UUID.randomUUID;
+
 import java.util.UUID;
 
 import javax.inject.Singleton;
 
-import io.reactivex.Maybe;
+import io.reactivex.Single;
 
 @Singleton
 public class StatusServiceImpl implements StatusService<Status, UUID> {
 
     @Override
-    public Maybe<Status> find(UUID id) {
-		return Maybe.empty();
+    public Single<Status> save(Status status) {
+      status.setId(randomUUID());
+	  return Single.just(status);
 	}
 
 }

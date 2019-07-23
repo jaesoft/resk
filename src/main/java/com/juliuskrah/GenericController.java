@@ -2,8 +2,8 @@ package com.juliuskrah;
 
 import java.io.Serializable;
 
-import io.micronaut.http.annotation.Get;
-import io.reactivex.Maybe;
+import io.micronaut.http.annotation.Post;
+import io.reactivex.Single;
 
 public abstract class GenericController<T, ID extends Serializable> {
     private final StatusService<T, ID> service;
@@ -12,9 +12,8 @@ public abstract class GenericController<T, ID extends Serializable> {
         this.service = service;
     }
 
-    @Get("/{id}")
-    public Maybe<T> find(ID id) {
-        System.out.println("id " + id.getClass()); // java.lang.String
-        return service.find(id);
+    @Post
+    public Single<T> save(T entiity) {
+        return service.save(entiity);
     }
 }
