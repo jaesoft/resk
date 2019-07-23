@@ -1,4 +1,1 @@
-include 'message-command-side'
-include 'message-query-side'
-
-rootProject.name = 'resk'
+rootProject.name="resk"
