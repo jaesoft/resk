@@ -19,7 +19,7 @@ public interface UserRepository {
 
 	Flowable<List<String>> findAllRolesByUsername(String username);
 
-	Flowable<User> findAllUsers();
+	Flowable<User> findAll();
 
 	Single<User> save(User user);
 

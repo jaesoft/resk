@@ -1,5 +1,5 @@
 -- Create initial schema
-CREATE TABLE users (
+CREATE TABLE IF NOT EXISTS users (
   id UUID NOT NULL PRIMARY KEY,
   email VARCHAR(255) NOT NULL,
   username VARCHAR(255) NOT NULL,
@@ -8,20 +8,27 @@ CREATE TABLE users (
   account_expired BOOLEAN DEFAULT FALSE,
   account_locked BOOLEAN DEFAULT FALSE,
   password_expired BOOLEAN DEFAULT FALSE,
-  CONSTRAINT id UNIQUE (id),
-  CONSTRAINT email UNIQUE (email),
-  CONSTRAINT username UNIQUE (username)
+  CONSTRAINT users_email_unq UNIQUE (email),
+  CONSTRAINT users_username_unq UNIQUE (username)
 );
 
-CREATE TABLE roles (
+CREATE TABLE IF NOT EXISTS roles (
   authority VARCHAR(255) NOT NULL PRIMARY KEY,
-  CONSTRAINT authority UNIQUE (authority)
+  CONSTRAINT roles_authority_unq UNIQUE (authority)
 );
 
-CREATE TABLE user_role (
+CREATE TABLE IF NOT EXISTS user_role (
   user_id UUID NOT NULL,
   role VARCHAR(255) NOT NULL,
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
   FOREIGN KEY (role) REFERENCES roles(authority) ON DELETE CASCADE,
   PRIMARY KEY (user_id, role)
 );
+
+CREATE TABLE IF NOT EXISTS projects (
+  id UUID NOT NULL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  owner VARCHAR(255),
+  description TEXT
+);
+

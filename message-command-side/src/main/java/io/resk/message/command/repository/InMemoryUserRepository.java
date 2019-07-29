@@ -30,7 +30,7 @@ public class InMemoryUserRepository implements UserRepository {
         user.setPassword("$2a$10$rfjZ0l/Q78mXOwU9mfczZuYF7kEPqodx9ZI.tLRUmIa65WTmMfB9e");
         user.setUsername("admin");
         users.add(user);
-        System.out.println("User added");
+        log.info("User added");
     }
 
     @Override
@@ -56,14 +56,15 @@ public class InMemoryUserRepository implements UserRepository {
 
     @Override
     public Flowable<List<String>> findAllRolesByUsername(@NotNull String username) {
-        return users.stream().filter(user -> username.equalsIgnoreCase(user.getUsername()))
+        return users.stream() //
+        		.filter(user -> username.equalsIgnoreCase(user.getUsername()))
                 .findFirst()
                 .map(user -> Flowable.just(user.getRoles()))
                 .orElse(Flowable.empty());
     }
 
     @Override
-    public Flowable<User> findAllUsers() {
+    public Flowable<User> findAll() {
         return Flowable.fromIterable(users);
     }
 

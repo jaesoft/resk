@@ -34,7 +34,7 @@ public class UserResource {
 
 	@Get
 	public Flowable<User> retrieveUsers() {
-		return userRepository.findAllUsers();
+		return userRepository.findAll();
 	}
 
 	@Get("/{username}/username")

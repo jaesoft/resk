@@ -12,7 +12,8 @@ import lombok.Value;
 @Builder
 @JsonDeserialize(builder = Message.MessageBuilder.class)
 public class Message {
-	String name;
+	// @NotBlank
+	// String name;
 	Map<String, Object> data;
 	Notification notification;
 	Object android;

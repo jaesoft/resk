@@ -13,7 +13,8 @@ import javax.inject.Singleton;
 public class ReskUserFetcher implements UserFetcher {
     private final UserRepository userRepository;
 
-    @Override
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+	@Override
     public Publisher<UserState> findByUsername(String username) {
         return (Publisher) userRepository.findByUsername(username).toFlowable();
     }

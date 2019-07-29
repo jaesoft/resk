@@ -1,7 +1,9 @@
 package io.resk.message.command.repository.exception;
 
 public class EntityExistsException extends PersistenceException {
-    public EntityExistsException() {
+	private static final long serialVersionUID = 1L;
+
+	public EntityExistsException() {
         super();
     }
 

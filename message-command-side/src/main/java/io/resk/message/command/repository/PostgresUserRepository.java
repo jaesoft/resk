@@ -124,7 +124,7 @@ public class PostgresUserRepository implements UserRepository {
 	}
 
 	@Override
-	public Flowable<User> findAllUsers() {
+	public Flowable<User> findAll() {
 		return client.rxBegin()
 				.flatMapPublisher(tx -> tx
 						.rxPrepare("SELECT id, username, email, password, "
