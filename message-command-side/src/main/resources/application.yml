@@ -1,7 +1,14 @@
+---
 micronaut:
   application:
     name: message-command-side
-  security:
+  io:
+    watch:
+      paths: src/main
+      restart: true
+---
+micronaut: 
+  security: 
     enabled: true
     endpoints:
       login:

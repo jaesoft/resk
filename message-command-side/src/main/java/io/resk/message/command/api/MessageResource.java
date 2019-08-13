@@ -46,8 +46,9 @@ public class MessageResource {
 						return ACCEPTED;
 					});
 
-					// Throw exception or 404 if project does not exist for user
-					// .defaultIfEmpty(HttpStatus.CONTINUE);
+					// 404 if project does not exist for user
+					// Message: unknown project-id
+					// .defaultIfEmpty(HttpStatus.NOT_FOUND);
 				})
 				// Authentication disabled
 				.orElseGet(() -> {

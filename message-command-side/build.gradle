@@ -1,12 +1,12 @@
 plugins {
-    id "io.spring.dependency-management" version "1.0.7.RELEASE"
-    id "com.github.johnrengelman.shadow" version "4.0.2"
+    id "io.spring.dependency-management" version "1.0.8.RELEASE"
+    id "com.github.johnrengelman.shadow" version "5.1.0"
     id "net.ltgt.apt-eclipse" version "0.21"
     id "net.ltgt.apt-idea" version "0.21"
 }
 
 ext {
-    lombokVersion = '1.18.6'
+    lombokVersion = '1.18.8'
     springSecurityCryptoVersion='5.1.5.RELEASE'
 }
 
@@ -24,7 +24,7 @@ repositories {
 
 dependencyManagement {
     imports {
-        mavenBom 'io.micronaut:micronaut-bom:1.2.0.RC2'
+        mavenBom 'io.micronaut:micronaut-bom:1.2.0'
     }
 }
 
